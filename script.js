@@ -8,37 +8,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // プログレス表示を初期化
     updateProgressText();
 
-    // 外部のJSONファイルを非同期で読み込む (fetch APIを使用)
-    fetch('quiz_data.json')
-        .then(response => {
-            if (!response.ok) {
-                // ファイルが見つからないなどのエラー処理
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            quizData = data; // データをグローバル変数に格納
+    // データをグローバル変数から取得 (quiz_data.jsで定義)
+    quizData = typeof QUIZ_DATA !== 'undefined' ? QUIZ_DATA : null;
 
-            if (!quizData || !quizData.questions || quizData.questions.length === 0) {
-                document.getElementById('quiz-container').innerHTML = '<p>クイズデータの読み込みに失敗しました。</p>';
-                return;
-            }
+    if (!quizData || !quizData.questions || quizData.questions.length === 0) {
+        console.error("クイズデータが見つかりません。quiz_data.jsが読み込まれているか確認してください。");
+        document.getElementById('quiz-container').innerHTML = '<p>クイズデータの読み込みに失敗しました。</p>';
+        return;
+    }
 
-            // 全問題からランダムに5問を選択
-            const allQuestions = quizData.questions;
-            const shuffled = allQuestions.sort(() => 0.5 - Math.random());
-            selectedQuestions = shuffled.slice(0, NUM_QUESTIONS_TO_SHOW);
+    // 全問題からランダムに5問を選択
+    const allQuestions = quizData.questions;
+    const shuffled = allQuestions.sort(() => 0.5 - Math.random());
+    selectedQuestions = shuffled.slice(0, NUM_QUESTIONS_TO_SHOW);
 
-            // 最初の問題を表示
-            renderCurrentQuestion();
-        })
-        .catch(error => {
-            console.error("クイズデータの読み込み中にエラーが発生しました:", error);
-            document.getElementById('quiz-container').innerHTML = `
-                <p>クイズデータの読み込みに失敗しました。ファイルが全て揃っているか、ブラウザの制限（Live Serverの使用など）を確認してください。</p>
-            `;
-        });
+    // 最初の問題を表示
+    renderCurrentQuestion();
 });
 
 /**
