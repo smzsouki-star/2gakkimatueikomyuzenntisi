@@ -7,7 +7,7 @@ let quizData = null; // データを格納する変数
 document.addEventListener('DOMContentLoaded', () => {
     // プログレス表示を初期化
     updateProgressText();
-    
+
     // 外部のJSONファイルを非同期で読み込む (fetch APIを使用)
     fetch('quiz_data.json')
         .then(response => {
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(data => {
             quizData = data; // データをグローバル変数に格納
-            
+
             if (!quizData || !quizData.questions || quizData.questions.length === 0) {
                 document.getElementById('quiz-container').innerHTML = '<p>クイズデータの読み込みに失敗しました。</p>';
                 return;
@@ -104,7 +104,7 @@ function checkAnswer(selectedButton, selectedOptionIndex) {
     const isCorrect = q.answerOptions[selectedOptionIndex].isCorrect;
     const optionsContainer = selectedButton.parentNode;
     const questionNumber = currentQuestionIndex + 1;
-    
+
     // 選択したボタンに 'selected' クラスを追加
     selectedButton.classList.add('selected');
 
@@ -120,7 +120,7 @@ function checkAnswer(selectedButton, selectedOptionIndex) {
     if (isCorrect) {
         correctCount++;
     } else {
-        // 【⭐ここを修正】不正解の場合、incorrect クラスを追加して赤色表示を有効にする
+        // 不正解の場合、incorrect クラスを追加して赤色表示を有効にする
         selectedButton.classList.add('incorrect');
     }
 
@@ -136,7 +136,7 @@ function checkAnswer(selectedButton, selectedOptionIndex) {
  */
 function nextQuestion() {
     currentQuestionIndex++;
-    
+
     if (currentQuestionIndex < NUM_QUESTIONS_TO_SHOW) {
         // 次の問題を表示
         renderCurrentQuestion();
@@ -155,7 +155,7 @@ function showResults() {
     const scoreText = document.getElementById('score-text');
     const nextBtn = document.getElementById('next-question-btn');
 
-    quizContainer.innerHTML = ''; 
+    quizContainer.innerHTML = '';
     nextBtn.style.display = 'none';
 
     scoreText.textContent = `${NUM_QUESTIONS_TO_SHOW}問中、${correctCount}問正解しました！ (${(correctCount / NUM_QUESTIONS_TO_SHOW) * 100}%)`;

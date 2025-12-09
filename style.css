@@ -1,9 +1,9 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     /* 背景を暗い色に設定 */
-    background-color: #121212; 
+    background-color: #121212;
     /* 文字色を白に近い色に設定 */
-    color: #E0E0E0; 
+    color: #E0E0E0;
     line-height: 1.6;
     margin: 0;
     padding: 20px;
@@ -15,35 +15,36 @@ body {
 
 .container {
     /* コンテナの背景も暗く */
-    background: #1E1E1E; 
+    background: #1E1E1E;
     padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); 
-    max-width: 900px; /* 容器の幅を広げて長い質問文に対応 */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    max-width: 900px;
+    /* 容器の幅を広げて長い質問文に対応 */
     width: 100%;
 }
 
 h1 {
     /* タイトルに青のアクセント */
-    color: #00BFFF; 
+    color: #00BFFF;
     font-size: 1.8em;
     text-align: center;
-    border-bottom: 2px solid #333333; 
+    border-bottom: 2px solid #333333;
     padding-bottom: 10px;
     margin-bottom: 20px;
 }
 
 .description {
-    /* ⭐進捗状況の文字を大きく */
+    /* 進捗状況の文字を大きく */
     font-size: 1.3em;
     text-align: center;
     margin-bottom: 35px;
-    color: #AAAAAA; 
+    color: #AAAAAA;
     font-weight: bold;
 }
 
 .question-card {
-    background: #252525; 
+    background: #252525;
     border: 1px solid #333333;
     border-radius: 8px;
     padding: 25px;
@@ -52,21 +53,22 @@ h1 {
 }
 
 .question-text {
-    /* ⭐質問文の文字を大幅に大きく */
-    font-size: 1.6em; 
+    /* 質問文の文字を大幅に大きく */
+    font-size: 1.6em;
     font-weight: bold;
     margin-bottom: 25px;
-    color: #F0F0F0; 
+    color: #F0F0F0;
 }
 
 .options-container button {
-    /* ⭐選択肢ボタンの文字を大幅に大きく */
-    font-size: 1.4em; 
+    /* 選択肢ボタンの文字を大幅に大きく */
+    font-size: 1.4em;
     display: block;
     width: 100%;
-    padding: 18px 20px; /* パディングを増やして押しやすく */
+    padding: 18px 20px;
+    /* パディングを増やして押しやすく */
     margin-bottom: 15px;
-    border: 1px solid #444444; 
+    border: 1px solid #444444;
     background-color: #333333;
     color: #E0E0E0;
     text-align: left;
@@ -76,7 +78,7 @@ h1 {
 }
 
 .options-container button:hover:not([disabled]) {
-    background-color: #444444; 
+    background-color: #444444;
     border-color: #555555;
 }
 
@@ -89,9 +91,9 @@ h1 {
 /* 回答後のフィードバック用スタイル */
 .options-container button.correct {
     /* 正解（緑色） */
-    background-color: #4CAF50; 
+    background-color: #4CAF50;
     border-color: #81C784;
-    color: #121212; 
+    color: #121212;
     font-weight: bold;
     box-shadow: 0 0 5px rgba(76, 175, 80, 0.8);
 }
@@ -99,34 +101,35 @@ h1 {
 /* 不正解で選択された場合のスタイル */
 .options-container button.incorrect.selected {
     /* 不正解（赤色） */
-    background-color: #F44336; 
+    background-color: #F44336;
     border-color: #E57373;
-    color: #121212; 
+    color: #121212;
     font-weight: bold;
     box-shadow: 0 0 8px rgba(244, 67, 54, 1.0);
 }
 
 .rationale-text {
-    /* ⭐解説文の文字を大きく */
+    /* 解説文の文字を大きく */
     font-size: 1.2em;
     margin-top: 25px;
     padding: 20px;
     border-left: 5px solid #00BFFF;
-    background-color: #2F2F2F; 
+    background-color: #2F2F2F;
     color: #E0E0E0;
     border-radius: 4px;
-    display: none; 
+    display: none;
 }
 
-#next-question-btn, #results-container button {
+#next-question-btn,
+#results-container button {
     display: block;
     width: 100%;
-    padding: 20px; 
-    /* ⭐ボタンの文字を大きく */
-    font-size: 1.4em; 
+    padding: 20px;
+    /* ボタンの文字を大きく */
+    font-size: 1.4em;
     font-weight: bold;
     color: white;
-    background-color: #00BFFF; 
+    background-color: #00BFFF;
     border: none;
     border-radius: 6px;
     cursor: pointer;
@@ -134,14 +137,15 @@ h1 {
     transition: background-color 0.3s;
 }
 
-#next-question-btn:hover, #results-container button:hover {
-    background-color: #00A3D9; 
+#next-question-btn:hover,
+#results-container button:hover {
+    background-color: #00A3D9;
 }
 
 #results-container {
     text-align: center;
     padding: 30px;
-    border: 2px solid #00BFFF; 
+    border: 2px solid #00BFFF;
     border-radius: 12px;
     margin-top: 30px;
 }
@@ -152,7 +156,7 @@ h1 {
 }
 
 #score-text {
-    /* ⭐スコア表示の文字を大幅に大きく */
+    /* スコア表示の文字を大幅に大きく */
     font-size: 1.8em;
     font-weight: bold;
     margin-bottom: 20px;
